@@ -1,0 +1,8 @@
+@import "tailwindcss";
+
+@import url('https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu&display=swap');
+
+body{
+    background-color: rgb(4, 44, 4);
+    color: white;
+}
