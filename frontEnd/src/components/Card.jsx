@@ -1,33 +1,61 @@
-import React, { useState } from 'react'
-import { useNavigate } from 'react-router-dom';
+import React, { useState } from "react";
+import cartIcon from "../assets/cart.svg";
+import { useNavigate } from "react-router-dom";
 
 const Card = (props) => {
-  const [isLoggedIn, setIsLoggedIn] = useState(localStorage.getItem("isLoggedIn") === "true");
+  const [isLoggedIn, setIsLoggedIn] = useState(
+    localStorage.getItem("isLoggedIn") === "true",
+  );
 
-  
-const navigate = useNavigate();
+  const navigate = useNavigate();
 
- const handleSubmit = () => {
-  let selectedItem = `Title: ${props.title}, Price: ${props.price}pkr`;
-  localStorage.setItem('selectedItem', selectedItem);
-    navigate('/orderform');
-  }
+  const handleSubmit = () => {
+    let selectedItem = `Title: ${props.title}, Price: ${props.price}pkr`;
+    localStorage.setItem("selectedItem", selectedItem);
+    navigate("/orderform");
+  };
 
   return (
-    <div>
-      <div className="container h-90 w-70 bg-zinc-800 rounded-lg flex flex-col items-center p-4 m-4 hover:scale-105 duration-500 transition-transform
-      ">
-       <div className='flex flex-col items-center justify-center h-[85%] gap-5'>
-       <div className="picture overflow-hidden"><img src={props.image} alt={props.title} className='overflow-y-hidden'/></div>
-        <div className="title font-bold text-yellow-500 font-mono text-xl">{props.title}</div>
-        </div> 
-        <div className='flex justify-between w-full mt-5'>
-        <div className="price">{props.price}pkr</div>
-        <button onClick={()=> {!isLoggedIn ? alert("Login first to Order") : handleSubmit()} } className='border rounded-lg px-2 py-1 hover:bg-yellow-500 cursor-pointer' >Buy Now</button>
+    <div
+      className="w-80 md:w-72 bg-[#0F2F24] rounded-2xl p-5 m-4  
+shadow-lg hover:shadow-2xl hover:-translate-y-2 
+transition-all duration-300 border border-[#D4AF37]/20 flex flex-col justify-between"
+    >
+      
+      <div className="rounded-xl h-44 flex items-center justify-center overflow-hidden">
+        <img
+          src={props.image}
+          alt={props.title}
+          className="h-full w-full object-contain"
+        />
+      </div>
+
+     
+      <div className="mt-4 flex flex-col grow">
+
+        <h2 className="text-lg font-semibold text-[#D4AF37] text-center">
+          {props.title}
+        </h2>
+
+        <div className="text-white text-base font-medium mt-2 text-center">
+          {props.price} PKR
         </div>
+
+
+        <button
+          onClick={() => {
+            !isLoggedIn ? alert("Login first to Order") : handleSubmit();
+          }}
+          className="flex items-center justify-center gap-2 w-full mt-4 
+      bg-[#D4AF37] text-black py-2 rounded-lg font-medium 
+      hover:opacity-90 transition"
+        >
+         <img className="w-6" src={cartIcon} alt="Cart Icon" />
+          Add to Cart
+        </button>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Card
+export default Card;

@@ -12,7 +12,7 @@ const Login = () => {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value
-    });
+    }); 
   }
 
    const handleSubmit = async (e) =>{
@@ -39,24 +39,42 @@ const Login = () => {
 
   return (
    <>
-   <form onSubmit={handleSubmit} className='bg-black flex flex-col w-[75%] md:w-[400px] md:min-h-[60vh] m-auto mt-15 items-center gap-5 rounded-xl shadow-2xl'>
-    <div className='flex flex-col items-start mt-5'>
-    <label htmlFor="email">Enter Your Email: </label>
-    <input type="email" placeholder='Email' name='email' onChange={handleChange} value={formData.email} required className='border rounded-sm md:w-2xs h-9'/>
-    </div>
-    <div className='flex flex-col items-start '>
-    <label htmlFor="email">Enter Password: </label>
-    <input type="password" placeholder='Password' name='password' onChange={handleChange} value={formData.password} className='border rounded-sm md:w-2xs h-9' required/>
-    </div>
-    {message && <p className={isError? "text-red-600" : "text-green-600"}>{message}</p>}
-        <div className='flex flex-row gap-5'>
-    <button className='bg-yellow-600 py-1 rounded-lg font-bold hover:text-yellow-500 hover:bg-transparent hover:border cursor-pointer w-[100px] mt-5'>Login</button>
-    <NavLink to='/' className='bg-yellow-600 py-1 rounded-lg font-bold hover:text-yellow-500 hover:bg-transparent hover:border cursor-pointer w-[100px] mt-5 text-center'>Back</NavLink>
-    </div>
-    <p>new to Sanabel Sweets? <NavLink to='/signup' className='text-yellow-500 underline'>Sign Up </NavLink></p>
-   </form>
+   
+  <form onSubmit={handleSubmit} className='bg-black bg-opacity-90 flex flex-col w-full max-w-[400px] m-auto mt-12 mb-20 p-6 items-center gap-6 rounded-xl shadow-2xl'>
+  <div className='flex flex-col w-full'>
+    <label htmlFor="email" className='text-white text-lg mb-1'>Enter Your Email:</label>
+    <input 
+      id="email"
+      type="email" 
+      placeholder='Email' 
+      name='email' 
+      onChange={handleChange} 
+      value={formData.email} 
+      required 
+      className='border border-gray-600 rounded-lg w-full h-10 px-3 focus:outline-none focus:ring-2 focus:ring-yellow-500 placeholder-gray-400'
+    />
+  </div>
+  <div className='flex flex-col w-full'>
+    <label htmlFor="password" className='text-white text-lg mb-1'>Enter Password:</label>
+    <input 
+      id="password"
+      type="password" 
+      placeholder='Password' 
+      name='password' 
+      onChange={handleChange} 
+      value={formData.password} 
+      required
+      className='border border-gray-600 rounded-lg w-full h-10 px-3 focus:outline-none focus:ring-2 focus:ring-yellow-500 placeholder-gray-400'
+    />
+  </div>
+  {message && <p className={isError? "text-red-600" : "text-green-500"}>{message}</p>}
+  <div className='flex flex-row gap-4 w-full'>
+      <button className='bg-yellow-600 text-black py-2 rounded-lg font-bold w-full md:w-full hover:bg-yellow-500 transition-all duration-300 mt-10'>Login</button>
+  </div>
+  <p className='text-white text-sm'>New to Sanabel Sweets? <NavLink to='/signup' className='text-yellow-500 underline'>Sign Up</NavLink></p>
+</form>
    </>
-  )
+  ) 
 }
 
 export default Login

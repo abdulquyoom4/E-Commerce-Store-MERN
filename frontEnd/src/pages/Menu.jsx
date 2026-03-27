@@ -14,11 +14,12 @@ const Menu = () => {
   }, [])
   
   return (
-    <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 my-10 place-items-center '>
+    <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 my-10 place-items-center '>
      {items.map((item) => (
-      <Card key={item._id} title={item.title} image={`http://localhost:3000//${item.image}`} price={item.price}/>
+      <Card key={item._id} title={item.title} image={"public/images/"+item.image} price={item.price}/>
      ))}
     </div>
+
   )
 } 
 

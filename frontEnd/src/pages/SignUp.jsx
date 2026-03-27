@@ -29,30 +29,92 @@ const SignUp = () => {
     }
   }
 
-  return (
-   <>
-    <form onSubmit={handleSubmit} className='bg-black flex flex-col w-[75%] md:w-[400px] md:min-h-[70vh] m-auto mt-15 items-center gap-5 rounded-xl shadow-lg'>
-    <div className='flex flex-col items-start mt-5'>
-    <label htmlFor="fullname">Enter FullName: </label>
-    <input type="text" placeholder='Full Name' name='fullname' value={formData.fullname} onChange={handleChange} required className='border rounded-sm md:w-2xs h-9'/>
-    </div>
-    <div className='flex flex-col items-start '>
-    <label htmlFor="email">Enter Your Email: </label>
-    <input type="email" placeholder='Email' name='email' value={formData.email} onChange={handleChange} required className='border rounded-sm md:w-2xs h-9'/>
-    </div>
-    <div className='flex flex-col items-start '>
-    <label htmlFor="password">Enter Password: </label>
-    <input type="password" placeholder='Password' name='password' value={formData.password} onChange={handleChange} required className='border rounded-sm md:w-2xs h-9'/>
-    </div>
-    {message && <p className={isError? "text-red-600" : "text-green-600"}>{message}</p>}
-       <div className='flex flex-row gap-5'>
-    <button className='bg-yellow-600 py-1 rounded-lg font-bold hover:text-yellow-500 hover:bg-transparent hover:border cursor-pointer w-[100px] mt-5'>SignUp</button>
-    <NavLink to='/'className='bg-yellow-600 py-1 rounded-lg font-bold hover:text-yellow-500 hover:bg-transparent hover:border cursor-pointer w-[100px] mt-5 text-center'>Back</NavLink>
-    </div>
-    <p>Already have an Account?  <NavLink to='/login' className='text-yellow-500 underline'>Login</NavLink></p>
-   </form>
-   </>
-  )
+ return (
+  <>
+    <form 
+      onSubmit={handleSubmit} 
+      className='bg-black bg-opacity-90 flex flex-col w-full max-w-[400px] m-auto mt-12 mb-20 p-6 items-center gap-6 rounded-xl shadow-2xl'
+    >
+
+      {/* Full Name */}
+      <div className='flex flex-col w-full'>
+        <label htmlFor="fullname" className='text-white text-lg mb-1'>
+          Enter Your Full Name:
+        </label>
+        <input 
+          id="fullname"
+          type="text" 
+          placeholder='Full Name' 
+          name='fullname' 
+          onChange={handleChange} 
+          value={formData.fullname} 
+          required 
+          className='border border-gray-600 rounded-lg w-full h-10 px-3 focus:outline-none focus:ring-2 focus:ring-yellow-500 placeholder-gray-400'
+        />
+      </div>
+
+      {/* Email */}
+      <div className='flex flex-col w-full'>
+        <label htmlFor="email" className='text-white text-lg mb-1'>
+          Enter Your Email:
+        </label>
+        <input 
+          id="email"
+          type="email" 
+          placeholder='Email' 
+          name='email' 
+          onChange={handleChange} 
+          value={formData.email} 
+          required 
+          className='border border-gray-600 rounded-lg w-full h-10 px-3 focus:outline-none focus:ring-2 focus:ring-yellow-500 placeholder-gray-400'
+        />
+      </div>
+
+      {/* Password */}
+      <div className='flex flex-col w-full'>
+        <label htmlFor="password" className='text-white text-lg mb-1'>
+          Enter Password:
+        </label>
+        <input 
+          id="password"
+          type="password" 
+          placeholder='Password' 
+          name='password' 
+          onChange={handleChange} 
+          value={formData.password} 
+          required
+          className='border border-gray-600 rounded-lg w-full h-10 px-3 focus:outline-none focus:ring-2 focus:ring-yellow-500 placeholder-gray-400'
+        />
+      </div>
+
+      {/* Message */}
+      {message && (
+        <p className={isError ? "text-red-600" : "text-green-500"}>
+          {message}
+        </p>
+      )}
+
+      {/* Button */}
+      <div className='flex flex-row gap-4 w-full'>
+        <button 
+          type="submit"
+          className='bg-yellow-600 text-black py-2 rounded-lg font-bold w-full hover:bg-yellow-500 transition-all duration-300 mt-6'
+        >
+          Sign Up
+        </button>
+      </div>
+
+      {/* Redirect */}
+      <p className='text-white text-sm'>
+        Already have an account?{" "}
+        <NavLink to='/login' className='text-yellow-500 underline'>
+          Login
+        </NavLink>
+      </p>
+
+    </form>
+  </>
+)
 }
 
 export default SignUp
